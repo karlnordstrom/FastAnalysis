@@ -1,11 +1,11 @@
 #ifndef FourMomentum_HH
 #define FourMomentum_HH
 
-#include <Utils.hh>
+#include <FastAnalysis/Utils.hh>
 
 using namespace std;
 
-namespace Analysis {
+namespace FastAnalysis {
 
 /// My own four momentum class to allow storage of
 /// pdgid and status codes with the vector

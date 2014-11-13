@@ -27,7 +27,7 @@
 
 using namespace std;
 
-namespace Analysis {
+namespace FastAnalysis {
 
 /// Class for throwing exceptions
 class Exception : public std::runtime_error {

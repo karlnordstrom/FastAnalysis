@@ -1,12 +1,12 @@
 #ifndef Selectors_HH
 #define Selectors_HH
 
-#include <Utils.hh>
-#include <FourMomentum.hh>
+#include <FastAnalysis/Utils.hh>
+#include <FastAnalysis/FourMomentum.hh>
 
 using namespace std;
 
-namespace Analysis {
+namespace FastAnalysis {
 
 enum Cut {More, Less, Equal, NotEqual, None};
 

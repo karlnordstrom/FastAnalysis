@@ -1,6 +1,6 @@
-#include <Selectors.hh>
+#include <FastAnalysis/Selectors.hh>
 
-namespace Analysis {
+namespace FastAnalysis {
 
 Comparison::Comparison()
     :  _ptset(false), _massset(false), _deltarset(false), _energyset(false)

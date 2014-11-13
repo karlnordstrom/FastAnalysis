@@ -1,14 +1,14 @@
 #ifndef LheReader_HH
 #define LheReader_HH
 
-#include <Utils.hh>
-#include <FourMomentum.hh>
+#include <FastAnalysis/Utils.hh>
+#include <FastAnalysis/FourMomentum.hh>
 #include <fstream>
 #include <sstream>
 
 using namespace std;
 
-namespace Analysis {
+namespace FastAnalysis {
 
 class LheReader {
 

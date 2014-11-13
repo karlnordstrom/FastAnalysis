@@ -1,8 +1,8 @@
-#include <LheReader.hh>
+#include <FastAnalysis/LheReader.hh>
 
 using namespace std;
 
-namespace Analysis {
+namespace FastAnalysis {
 
 LheReader::LheReader(string filename = "")
     :  _filename(filename), _opened(false)

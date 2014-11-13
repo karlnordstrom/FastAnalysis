@@ -1,8 +1,8 @@
-#include <FourMomentum.hh>
+#include <FastAnalysis/FourMomentum.hh>
 
 using namespace std;
 
-namespace Analysis {
+namespace FastAnalysis {
 
 FourMomentum::FourMomentum(TLorentzVector& mom, int pdgid, int status)
     : _tvector(mom), _pdgId(pdgid), _status(status)

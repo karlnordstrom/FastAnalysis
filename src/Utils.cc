@@ -1,8 +1,8 @@
-#include <Utils.hh>
+#include <FastAnalysis/Utils.hh>
 
 using namespace std;
 
-namespace Analysis {
+namespace FastAnalysis {
 
 AverageHisto::AverageHisto(int array, float min, float max)
     : _min(min), _max(max), _bin((float)(max-min)/array)
