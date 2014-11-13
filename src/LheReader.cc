@@ -15,18 +15,20 @@ void LheReader::addFile(string filename) {
     _opened = false;
 }
 
-vector<FourMomentum> LheReader::nextEvent() {
+pair<vector<FourMomentum>,double> LheReader::nextEvent() {
     assert(_filename != "");
     if(_opened == false) { _file.open(_filename.c_str()); _opened = true; }
     vector<FourMomentum> particles;
-    double px, py, pz, E;
+    double px, py, pz, E, weight;
     int pdg, status, dump;
     string line;
     while(true) {
       getline(_file, line);
-      if (!_file) return particles;// end of file
+      if (!_file) return make_pair(particles,0.);// end of file
       if (line == "<event>") {
         getline(_file, line);
+        istringstream iss(line);
+        iss >> dump >> dump >> weight;
         while (true) {
           getline(_file, line);
           if (line == "</event>") break;
@@ -37,7 +39,7 @@ vector<FourMomentum> LheReader::nextEvent() {
       break;
       }
     }
-    return particles;
+    return make_pair(particles, weight);
 }
 
 } // end namespace

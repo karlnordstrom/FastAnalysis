@@ -17,7 +17,7 @@ public:
     LheReader(string filename = "");
     ~LheReader();
     void addFile(string filename);
-    vector<FourMomentum> nextEvent();
+    pair<vector<FourMomentum>,double> nextEvent();
 
 private:
 
