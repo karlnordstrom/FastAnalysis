@@ -26,6 +26,7 @@ library: Utils.o FourMomentum.o Selectors.o LheReader.o
 	@rm Utils.o
 	@rm FourMomentum.o
 	@rm Selectors.o
+	@rm LheReader.o
 
 FourMomentum.o: ./src/FourMomentum.cc ./include/FourMomentum.hh
 	@echo "Building FourMomentum..."
