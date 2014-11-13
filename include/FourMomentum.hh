@@ -55,28 +55,28 @@ private:
 /// vectors containing the pt, eta, phi, and E values
 
 template <class N, class M, class R, class T>
-FourMomentum makeVector(N pt, M eta, R phi, T E) {
+FourMomentum makeVectorPtEtaPhiE(N pt, M eta, R phi, T E) {
     TLorentzVector vector;
-    vector.SetPtEtaPhiE(pt/1000., eta, phi, E/1000.); // convert to GeV
+    vector.SetPtEtaPhiE(pt, eta, phi, E);
     FourMomentum mom(vector, 0, 0);
     return mom;
 }
 
 template <class N, class M, class R, class T>
-FourMomentum makeVector(N pt, M eta, R phi, T E, int pdgId, int status) {
+FourMomentum makeVectorPtEtaPhiE(N pt, M eta, R phi, T E, int pdgId, int status) {
     TLorentzVector vector;
-    vector.SetPtEtaPhiE(pt/1000., eta, phi, E/1000.); // convert to GeV
+    vector.SetPtEtaPhiE(pt, eta, phi, E);
     FourMomentum mom(vector, pdgId, status);
     return mom;
 }
 
 template <class N, class M, class R, class T>
-vector<FourMomentum> makeVectors(vector<N> pt, vector<M> eta, vector<R> phi, vector<T> E, vector<int> pdgId, vector<int> status) {
+vector<FourMomentum> makeVectorsPtEtaPhiE(vector<N> pt, vector<M> eta, vector<R> phi, vector<T> E, vector<int> pdgId, vector<int> status) {
     assert(pt.size() == eta.size() && eta.size() == phi.size() && phi.size() == E.size() && E.size() == pdgId.size() && pdgId.size() == status.size());//make sure input makes sense
     vector<FourMomentum> vectors;
     TLorentzVector vector;
     for(unsigned int it = 0; it < pt.size(); it++) {
-        vector.SetPtEtaPhiE(pt[it]/1000., eta[it], phi[it], E[it]/1000.); // convert to GeV
+        vector.SetPtEtaPhiE(pt[it], eta[it], phi[it], E[it]);
         FourMomentum mom(vector, pdgId[it], status[it]);
         vectors.push_back(mom);
     }
@@ -84,12 +84,56 @@ vector<FourMomentum> makeVectors(vector<N> pt, vector<M> eta, vector<R> phi, vec
 }
 
 template<class N, class M, class R, class T>
-vector<FourMomentum> makeVectors(vector<N> pt, vector<M> eta, vector<R> phi, vector<T> E) {
+vector<FourMomentum> makeVectorsPtEtaPhiE(vector<N> pt, vector<M> eta, vector<R> phi, vector<T> E) {
     assert(pt.size() == eta.size() && eta.size() == phi.size() && phi.size() == E.size());//make sure input makes sense
     vector<FourMomentum> vectors;
     TLorentzVector vector;
     for(unsigned int it = 0; it < pt.size(); it++) {
-        vector.SetPtEtaPhiE(pt[it]/1000., eta[it], phi[it], E[it]/1000.); // convert to GeV
+        vector.SetPtEtaPhiE(pt[it], eta[it], phi[it], E[it]);
+        FourMomentum mom(vector, 0, 0);
+        vectors.push_back(mom);
+    }
+    return vectors;
+}
+
+/// Make four momenta from px, py, pz, E
+
+template <class N, class M, class R, class T>
+FourMomentum makeVectorPxPyPzE(N px, M py, R pz, T E) {
+    TLorentzVector vector;
+    vector.SetPxPyPzE(px, py, pz, E);
+    FourMomentum mom(vector, 0, 0);
+    return mom;
+}
+
+template <class N, class M, class R, class T>
+FourMomentum makeVectorPxPyPzE(N px, M py, R pz, T E, int pdgId, int status) {
+    TLorentzVector vector;
+    vector.SetPxPyPzE(px, py, pz, E);
+    FourMomentum mom(vector, pdgId, status);
+    return mom;
+}
+
+template <class N, class M, class R, class T>
+vector<FourMomentum> makeVectorsPxPyPzE(vector<N> px, vector<M> py, vector<R> pz, vector<T> E, vector<int> pdgId, vector<int> status) {
+    assert(px.size() == py.size() && py.size() == pz.size() && pz.size() == E.size() && E.size() == pdgId.size() && pdgId.size() == status.size());//make sure input makes sense
+    vector<FourMomentum> vectors;
+    TLorentzVector vector;
+    for(unsigned int it = 0; it < px.size(); it++) {
+        vector.SetPxPyPzE(px[it], py[it], pz[it], E[it]);
+        FourMomentum mom(vector, pdgId[it], status[it]);
+        vectors.push_back(mom);
+    }
+    return vectors;
+}
+
+template<class N, class M, class R, class T>
+vector<FourMomentum> makeVectorsPxPyPzE(vector<N> px, vector<M> py, vector<R> pz, vector<T> E) {
+    assert(px.size() == py.size() && py.size() == pz.size() && pz.size() == E.size());//make sure input makes sense
+    vector<FourMomentum> vectors;
+    TLorentzVector vector;
+    for(unsigned int it = 0; it < px.size(); it++) {
+        vector.SetPxPyPzE(px[it], py[it], pz[it], E[it]);
         FourMomentum mom(vector, 0, 0);
         vectors.push_back(mom);
     }

@@ -19,9 +19,9 @@ ROOT_LIBS=$(shell root-config --libs)
 
 all: library
 
-library: Utils.o FourMomentum.o Selectors.o
+library: Utils.o FourMomentum.o Selectors.o LheReader.o
 	@echo "Linking library..."
-	@g++ -shared -Wl,-soname -o ./lib/libFastAnalysis.so Utils.o FourMomentum.o Selectors.o -lc $(MY_INCS) $(MY_LIBS) $(ROOT_INCS) $(ROOT_LIBS)
+	@g++ -shared -Wl,-soname -o ./lib/libFastAnalysis.so $< -lc $(MY_INCS) $(MY_LIBS) $(ROOT_INCS) $(ROOT_LIBS)
 	@cp -f ./lib/libFastAnalysis.so $(MY_LD_LIBRARY_PATH)
 	@rm Utils.o
 	@rm FourMomentum.o
@@ -38,6 +38,10 @@ Utils.o: ./src/Utils.cc ./include/Utils.hh
 Selectors.o: ./src/Selectors.cc ./include/Selectors.hh
 	@echo "Building Selectors..."
 	@g++ $(FLAGS) -c -fPIC ./src/Selectors.cc -o Selectors.o $(MY_INCS) $(MY_LIBS) $(ROOT_INCS) $(ROOT_LIBS)
+
+LheReader.o: ./src/LheReader.cc ./include/LheReader.hh
+	@echo "Building LheReader..."
+	@g++ $(FLAGS) -c -fPIC ./src/LheReader.cc -o LheReader.o $(MY_INCS) $(MY_LIBS) $(ROOT_INCS) $(ROOT_LIBS)
 
 clean:
 	@rm ./lib/libFastAnalysis.so || :
