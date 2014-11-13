@@ -4,7 +4,7 @@ using namespace std;
 
 namespace FastAnalysis {
 
-LheReader::LheReader(string filename = "")
+LheReader::LheReader(string filename)
     :  _filename(filename), _opened(false)
       {}
 

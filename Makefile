@@ -20,8 +20,8 @@ all: library
 
 library: Utils.o FourMomentum.o Selectors.o LheReader.o
 	@echo "Linking library..."
-	@g++ -shared -Wl,-soname -o ./lib/libFastAnalysis.so $< -lc $(MY_INCS) $(MY_LIBS) $(ROOT_INCS) $(ROOT_LIBS)
-	@cp -f ./lib/libFastAnalysis.so $(MY_LD_LIBRARY_PATH)
+	@g++ -shared -o ./lib/libFastAnalysis.a Utils.o FourMomentum.o Selectors.o LheReader.o $(ROOT_LIBS)
+	@cp -f ./lib/libFastAnalysis.a $(MY_LD_LIBRARY_PATH)
 	@cp -rf ./include/FastAnalysis/ $(MY_INCLUDE_PATH)
 	@rm Utils.o
 	@rm FourMomentum.o
