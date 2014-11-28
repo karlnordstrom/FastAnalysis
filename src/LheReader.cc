@@ -15,11 +15,11 @@ void LheReader::addFile(string filename) {
     _opened = false;
 }
 
-pair<vector<FourMomentum>,double> LheReader::nextEvent() {
+pair<vector<FourMomentum>,vector<double> > LheReader::nextEvent() {
     assert(_filename != "");
     if(_opened == false) { _file.open(_filename.c_str()); _opened = true; }
     vector<FourMomentum> particles;
-    double px, py, pz, E, weight;
+    double px, py, pz, E, weight, scale;
     int pdg, status, dump;
     string line;
     while(true) {
@@ -28,7 +28,7 @@ pair<vector<FourMomentum>,double> LheReader::nextEvent() {
       if (line == "<event>") {
         getline(_file, line);
         istringstream iss(line);
-        iss >> dump >> dump >> weight;
+        iss >> dump >> dump >> weight >> scale;
         while (true) {
           getline(_file, line);
           if (line == "</event>") break;
@@ -39,7 +39,10 @@ pair<vector<FourMomentum>,double> LheReader::nextEvent() {
       break;
       }
     }
-    return make_pair(particles, weight);
+    vector<double> tmp;
+    tmp.push_back(weight);
+    tmp.push_back(scale);
+    return make_pair(particles, tmp);
 }
 
 } // end namespace
