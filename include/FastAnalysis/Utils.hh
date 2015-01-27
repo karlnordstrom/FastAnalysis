@@ -1,7 +1,6 @@
 #ifndef Utils_HH
 #define Utils_HH
 
-#include <Math/Vector4D.h>
 #include <TLorentzVector.h>
 #include <TFile.h>
 #include <TTree.h>
@@ -22,6 +21,7 @@
 #include <stdexcept>
 #include <boost/any.hpp>
 #include <algorithm>
+#include <cassert>
 
 #define foreach BOOST_FOREACH //just to clean up the loops a bit
 
