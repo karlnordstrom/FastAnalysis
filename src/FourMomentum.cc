@@ -36,6 +36,12 @@ float FourMomentum::deltaPt(FourMomentum other) const {
 float FourMomentum::pt() const {
     return _tvector.Pt();
 }
+float FourMomentum::P() const {
+    return _tvector.P();
+}
+float FourMomentum::mT() const {
+    return sqrt(_tvector.Mt2());
+}
 float FourMomentum::eta() const {
     return _tvector.Eta();
 }

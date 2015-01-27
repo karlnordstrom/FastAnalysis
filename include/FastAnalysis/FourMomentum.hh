@@ -29,6 +29,8 @@ public:
     int pdgId() const;
     int status() const;
     float pt() const;
+    float P() const;
+    float mT() const;
     float eta() const;
     float phi() const;
     float energy() const;
