@@ -36,6 +36,15 @@ float FourMomentum::deltaPt(FourMomentum other) const {
 float FourMomentum::pt() const {
     return _tvector.Pt();
 }
+float FourMomentum::px() const {
+    return _tvector.Px();
+}
+float FourMomentum::py() const {
+    return _tvector.Py();
+}
+float FourMomentum::pz() const {
+    return _tvector.Pz();
+}
 float FourMomentum::P() const {
     return _tvector.P();
 }

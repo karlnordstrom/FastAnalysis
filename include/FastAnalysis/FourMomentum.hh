@@ -29,6 +29,9 @@ public:
     int pdgId() const;
     int status() const;
     float pt() const;
+    float px() const;
+    float py() const;
+    float pz() const;
     float P() const;
     float mT() const;
     float eta() const;
